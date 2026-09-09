@@ -1,0 +1,22 @@
+{
+  "allow": [],
+  "privacy": [
+    "sk-[A-Za-z0-9_-]{16,}",
+    "AKIA[0-9A-Z]{16}",
+    "-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----",
+    "(^|[/\\\\.])\\.env([/\\\\s]|$)",
+    "id_rsa|id_ed25519",
+    "password\\s*[=:]\\s*[^\\s]{4,}",
+    "Authorization:\\s*Bearer\\s+[A-Za-z0-9._-]{20,}"
+  ],
+  "generate_tools": ["Write", "Edit", "Chat", "GenerateImage", "GenerateVideo"],
+  "scope_tools": ["Write", "Edit", "Bash", "Delete", "WebFetch"],
+  "high_risk": ["Delete"],
+  "high_risk_patterns": [
+    "git push --force|git push -f",
+    "git reset --hard",
+    "rm -rf",
+    "drop (table|database)",
+    "gh repo (create|delete|transfer)"
+  ]
+}

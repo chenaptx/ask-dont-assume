@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|Delete|Bash|WebFetch|WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /ABSOLUTE/PATH/TO/check.py --tool \"$TOOL_NAME\" --input \"$INPUT_JSON\" --state /ABSOLUTE/PATH/TO/state.json"
+          }
+        ]
+      }
+    ]
+  }
+}
