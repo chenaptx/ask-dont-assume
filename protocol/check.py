@@ -31,6 +31,17 @@ def decide(state, rules, tool, args):
     # R1 authorized: explicit allow beats everything except privacy
     if hits(rules["allow"], blob):
         return {"decision": "allow", "reason": "authorized"}
+    # UC-3: check if target path is in .git directory tree
+    if tool in ("Write", "Edit") and "path" in args:
+        path = args["path"]
+        if hits(rules.get("git_dir_patterns", []), path):
+            return {"decision": "ask", "reason": "git_dir"}
+    # UC-6: check AskUserQuestion question count
+    if tool == "AskUserQuestion" and "questions" in args:
+        questions = args["questions"]
+        limit = rules.get("ask_question_limit", 3)
+        if len(questions) > limit:
+            return {"decision": "ask", "reason": f"too_many_questions:{len(questions)}>{limit}"}
     # R3 facts: generation needs declared materials
     if tool in rules["generate_tools"] and not state.get("materials"):
         return {"decision": "ask", "reason": "materials"}

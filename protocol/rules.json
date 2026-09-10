@@ -11,12 +11,24 @@
   ],
   "generate_tools": ["Write", "Edit", "Chat", "GenerateImage", "GenerateVideo"],
   "scope_tools": ["Write", "Edit", "Bash", "Delete", "WebFetch"],
-  "high_risk": ["Delete"],
+  "high_risk": ["Delete", "SendMessage"],
   "high_risk_patterns": [
     "git push --force|git push -f",
     "git reset --hard",
     "rm -rf",
     "drop (table|database)",
-    "gh repo (create|delete|transfer)"
-  ]
+    "gh repo (create|delete|transfer)",
+    "docker push",
+    "kubectl apply",
+    "npm publish",
+    "scp .*@",
+    "rsync .*@",
+    "curl.*slack|curl.*discord"
+  ],
+  "git_dir_patterns": [
+    "\\.git/",
+    "\\.gitignore",
+    "\\.gitattributes"
+  ],
+  "ask_question_limit": 3
 }
