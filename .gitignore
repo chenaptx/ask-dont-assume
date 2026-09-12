@@ -1,0 +1,23 @@
+# runtime / local-only
+protocol/state.json
+*.log
+
+# OS / editor
+.DS_Store
+__pycache__/
+*.pyc
+
+# internal research / not part of the shipped skill
+architecture/
+benchmark-spec.md
+problem-definition-v2.md
+experiment/
+marketing/
+protocol/prompt-a.md
+protocol/prompt-b.md
+protocol/rationale.md
+protocol/workflow-design.md
+protocol/use-cases.md
+protocol/hooks-draft.md
+protocol/translate.py
+protocol/contract.md
